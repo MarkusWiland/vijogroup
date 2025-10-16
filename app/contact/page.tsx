@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import Link from "next/link";
 
 export default function ContactPage() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
@@ -24,7 +25,7 @@ Telefon: ${phone}
 Meddelande:
 ${message}`);
     const subject = encodeURIComponent("Kontaktförfrågan via viVJgroup.se");
-    window.location.href = `mailto:markus.wiland@outlook.com.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:info@vivjgroup.com?subject=${subject}&body=${body}`;
     setTimeout(() => setStatus("sent"), 600);
   }
 
@@ -193,12 +194,12 @@ ${message}`);
             >
               Maila oss
             </a>
-            <a
+            <Link
               href="/sporthorses"
               className="rounded-xl border border-white/10 bg-white/5 p-4 text-sm hover:bg-white/10"
             >
               Till VJ Sporthorses
-            </a>
+            </Link>
           </div>
         </section>
       </div>

@@ -116,7 +116,7 @@ export default function RootLayout({
                 © {new Date().getFullYear()} viVJgroup. Alla rättigheter
                 förbehållna.
               </span>
-              <span>Byggd med Next.js • Tailwind • Framer Motion</span>
+              <span>Skapad av Markus Wiland</span>
             </div>
           </div>
         </footer>
