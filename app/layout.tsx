@@ -42,7 +42,7 @@ export default function RootLayout({
             <Link href="/sporthorses" className="hover:text-white transition">
               ViJo Sporthorses
             </Link>
-            <Link href="#contact" className="hover:text-white transition">
+            <Link href="/contact" className="hover:text-white transition">
               Kontakt
             </Link>
           </nav>
@@ -69,7 +69,10 @@ export default function RootLayout({
               </h2>
               <ul className="mt-3 space-y-2 text-white/70">
                 <li>
-                  <Link href="/consulting" className="hover:text-white transition">
+                  <Link
+                    href="/consulting"
+                    className="hover:text-white transition"
+                  >
                     ViJo Consulting
                   </Link>
                 </li>
