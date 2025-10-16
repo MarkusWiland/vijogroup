@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +26,97 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-neutral-950 text-white selection:bg-white/20`}
       >
+        <header className="container mx-auto flex items-center justify-between px-6 py-5">
+          <Link href="/" className="group inline-flex items-center gap-2">
+            <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/15 group-hover:scale-105 transition">
+              <span className="text-lg font-black tracking-tight">ViJo</span>
+            </span>
+            <span className="text-xl font-semibold tracking-tight">Group</span>
+          </Link>
+          <nav className="hidden md:flex items-center gap-6 text-sm text-white/70">
+            <Link href="/consulting" className="hover:text-white transition">
+              ViJo Consulting
+            </Link>
+            <Link href="/sporthorses" className="hover:text-white transition">
+              ViJo Sporthorses
+            </Link>
+            <Link href="#contact" className="hover:text-white transition">
+              Kontakt
+            </Link>
+          </nav>
+        </header>
         {children}
+        <footer
+          id="contact"
+          className="border-t border-white/10 bg-neutral-950/60 backdrop-blur mt-12"
+        >
+          <div className="container mx-auto grid grid-cols-1 gap-8 px-6 py-12 md:grid-cols-3">
+            <div>
+              <h2 className="text-sm uppercase tracking-wider text-white/60">
+                Om viVJgroup
+              </h2>
+              <p className="mt-3 text-white/70">
+                viVJgroup samlar expertis inom utveckling, design och
+                fastighetsprojekt. Vi tror på tydlighet, kvalitet och
+                långsiktighet.
+              </p>
+            </div>
+            <div>
+              <h2 className="text-sm uppercase tracking-wider text-white/60">
+                Snabblänkar
+              </h2>
+              <ul className="mt-3 space-y-2 text-white/70">
+                <li>
+                  <Link href="/vjgroup" className="hover:text-white transition">
+                    VJgroup
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/vjhouses"
+                    className="hover:text-white transition"
+                  >
+                    VJhouses
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2 className="text-sm uppercase tracking-wider text-white/60">
+                Kontakt
+              </h2>
+              <p className="mt-3 text-white/70">
+                Mail:{" "}
+                <a
+                  className="underline decoration-white/30 hover:decoration-white"
+                  href="mailto:info@vivjgroup.com"
+                >
+                  info@vivjgroup.com
+                </a>
+              </p>
+              <p className="text-white/70">
+                Telefon:{" "}
+                <a
+                  className="underline decoration-white/30 hover:decoration-white"
+                  href="tel:+4612345678"
+                >
+                  +46 12 34 56 78
+                </a>
+              </p>
+            </div>
+          </div>
+          <div className="border-t border-white/10">
+            <div className="container mx-auto flex items-center justify-between px-6 py-6 text-xs text-white/50">
+              <span>
+                © {new Date().getFullYear()} viVJgroup. Alla rättigheter
+                förbehållna.
+              </span>
+              <span>Byggd med Next.js • Tailwind • Framer Motion</span>
+            </div>
+          </div>
+        </footer>
       </body>
     </html>
   );

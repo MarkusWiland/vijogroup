@@ -1,103 +1,119 @@
-import Image from "next/image";
 
-export default function Home() {
+"use client";
+import Link from "next/link";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+
+export default function LandingPage() {
+  const [hovered, setHovered] = useState<string | null>(null);
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main className="relative">
+      {/* Hero background (replace URL below with your image or remove bg) */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          backgroundImage:
+            "radial-gradient(60rem 30rem at 80% -10%, rgba(255,255,255,0.12), transparent 60%), url('/hero.jpg')",
+          backgroundSize: "cover, cover",
+          backgroundPosition: "center, center",
+          opacity: 0.14,
+          mixBlendMode: "screen",
+        }}
+      />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      <section className="container mx-auto px-6 pt-10 pb-6">
+        <div className="flex flex-col text-center items-center justify-center">
+
+        <motion.h1
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="max-w-3xl text-4xl md:text-6xl font-extrabold leading-tight tracking-tight"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          En tydlig väg in i <span className="bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent">viVJgroup</span>
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mt-4 max-w-2xl text-lg text-white/70"
           >
-            Read our docs
-          </a>
+          Välj kategori nedan. Sidan är uppdelad i två tydliga spår för att snabbt ta dig rätt: <span className="text-white">VJgroup</span> och <span className="text-white">VJhouses</span>.
+        </motion.p>
+          </div>
+      </section>
+
+      <section className="container mx-auto px-6 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <OptionCard
+            href="/consulting"
+            label="ViJo Consulting"
+            description="Tjänster, projekt och referenser. Upptäck hur vi skapar värde."
+            gradient="from-indigo-500/30 via-indigo-400/20 to-blue-500/20"
+            hovered={hovered}
+            setHovered={setHovered}
+          />
+          <OptionCard
+            href="/sporthorses"
+            label="ViJo Sporthorses"
+            description="Våra hus & objekt. Bläddra bland gallerier, specifikationer och kontakt."
+            gradient="from-emerald-500/30 via-emerald-400/20 to-teal-500/20"
+            hovered={hovered}
+            setHovered={setHovered}
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <p className="mt-6 text-center text-sm text-white/50">
+          Tips: Du kan alltid använda tangentbordet – tabb för att fokusera och enter för att välja.
+        </p>
+      </section>
+    </main>
   );
 }
+
+function OptionCard({
+  href,
+  label,
+  description,
+  gradient,
+  hovered,
+  setHovered,
+}: {
+  href: string;
+  label: string;
+  description: string;
+  gradient: string;
+  hovered: string | null;
+  setHovered: (v: string | null) => void;
+}) {
+  const isActive = hovered === label;
+  return (
+    <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.4 }}>
+      <Link
+        href={href}
+        onFocus={() => setHovered(label)}
+        onBlur={() => setHovered(null)}
+        onMouseEnter={() => setHovered(label)}
+        onMouseLeave={() => setHovered(null)}
+        className="group relative block overflow-hidden rounded-3xl ring-1 ring-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+      >
+        <div className={`absolute inset-0 bg-gradient-to-br ${gradient}`} aria-hidden />
+        <div className="absolute inset-0 bg-[radial-gradient(80rem_40rem_at_120%_-20%,rgba(255,255,255,0.12),transparent_60%)]" aria-hidden />
+        <div className="relative z-10 flex min-h-[46vh] flex-col items-start justify-between p-8 md:p-10">
+          <div className="space-y-3">
+            <span className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-xs uppercase tracking-wider text-white/80">{label}</span>
+            <h3 className="text-3xl md:text-4xl font-bold tracking-tight">{label}</h3>
+            <p className="max-w-[55ch] text-white/80">{description}</p>
+          </div>
+          <div className="mt-8 inline-flex items-center gap-2 rounded-2xl bg-white/10 px-4 py-2 text-sm font-medium text-white/90 ring-1 ring-inset ring-white/15 transition group-hover:gap-3">
+            <span>Gå vidare</span>
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
+          </div>
+        </div>
+        <motion.div initial={false} animate={{ opacity: isActive ? 1 : 0 }} transition={{ type: "spring", stiffness: 250, damping: 30 }} className="pointer-events-none absolute -inset-1 rounded-[1.7rem] bg-white/10 blur-2xl" />
+      </Link>
+    </motion.div>
+  );
+}
+
